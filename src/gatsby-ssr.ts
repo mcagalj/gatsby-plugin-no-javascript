@@ -73,7 +73,7 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
 
     return pageScripts.find((script): boolean => {
       return headComponent.props.as === 'script' &&
-          `/${script.name}` === headComponent.props.href &&
+          `${__PATH_PREFIX__}/${script.name}` === headComponent.props.href &&
           script.rel === headComponent.props.rel
     }) === undefined
   })
@@ -95,7 +95,7 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
       return false
     }
 
-    return pageScripts.find((script): boolean => postBodyComponent.type === 'script' && `/${script.name}` === postBodyComponent.props.src) === undefined
+    return pageScripts.find((script): boolean => postBodyComponent.type === 'script' && `${__PATH_PREFIX__}/${script.name}` === postBodyComponent.props.src) === undefined
   })
 }
 
