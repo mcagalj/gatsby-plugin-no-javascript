@@ -5,6 +5,7 @@
   "description": "Removes all javascript files created by Gatsby from the static HTML files.",
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "postinstall": "tsc --outDir ./build",
     "watch": "tsc --project tsconfig.json --watch",
     "prepackage": "npm run lint && npm run test && npm run build",
     "package": "standard-version",
