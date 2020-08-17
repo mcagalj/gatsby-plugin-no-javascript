@@ -94,7 +94,12 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
     if (postBodyComponent.props.id && (postBodyComponent.props.id === 'gatsby-script-loader' || postBodyComponent.props.id === 'gatsby-chunk-mapping')) {
       return false
     }
-
+    
+    // We do not need the polyfill script either (a script with nomodule attribute).
+    if (postBodyComponent.props.noModule) {
+            return false;
+    }
+    
     return pageScripts.find((script): boolean => postBodyComponent.type === 'script' && `${__PATH_PREFIX__}/${script.name}` === postBodyComponent.props.src) === undefined
   })
 }
